@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 feb. 2018 10:14:40 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="persistence.Deporte" table="DEPORTE" schema="HR" optimistic-lock="version">
+        <id name="codDeporte" type="big_decimal">
+            <column name="COD_DEPORTE" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="monitor" class="persistence.Monitor" fetch="select">
+            <column name="MONITORV1_DNI_MONITOR" length="36" not-null="true" />
+        </many-to-one>
+        <many-to-one name="polideportivo" class="persistence.Polideportivo" fetch="select">
+            <column name="POLIDEPORTIVOV1_COD_POLIDEPORTIVO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="descripcionDeporte" type="string">
+            <column name="DESCRIPCION_DEPORTE" length="600" />
+        </property>
+        <property name="precioDeporte" type="big_decimal">
+            <column name="PRECIO_DEPORTE" precision="2" scale="5" />
+        </property>
+        <set name="matriculadoses" table="MATRICULADOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DEPORTEV1_COD_DEPORTE" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="persistence.Matriculados" />
+        </set>
+    </class>
+</hibernate-mapping>

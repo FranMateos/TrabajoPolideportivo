@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 feb. 2018 10:14:40 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="persistence.Alumno" table="ALUMNO" schema="HR" optimistic-lock="version">
+        <id name="dni" type="string">
+            <column name="DNI" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreAlumno" type="string">
+            <column name="NOMBRE_ALUMNO" length="200" />
+        </property>
+        <property name="apellidosAlumno" type="string">
+            <column name="APELLIDOS_ALUMNO" length="400" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="FECHA_NACIMIENTO" length="7" />
+        </property>
+        <set name="matriculadoses" table="MATRICULADOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ALUMNOV1_DNI" length="36" not-null="true" />
+            </key>
+            <one-to-many class="persistence.Matriculados" />
+        </set>
+    </class>
+</hibernate-mapping>

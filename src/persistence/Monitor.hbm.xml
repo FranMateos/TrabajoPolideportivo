@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 feb. 2018 10:14:40 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="persistence.Monitor" table="MONITOR" schema="HR" optimistic-lock="version">
+        <id name="dniMonitor" type="string">
+            <column name="DNI_MONITOR" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreMonitor" type="string">
+            <column name="NOMBRE_MONITOR" length="200" />
+        </property>
+        <property name="apellidosMonitor" type="string">
+            <column name="APELLIDOS_MONITOR" length="400" />
+        </property>
+        <set name="deportes" table="DEPORTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MONITORV1_DNI_MONITOR" length="36" not-null="true" />
+            </key>
+            <one-to-many class="persistence.Deporte" />
+        </set>
+    </class>
+</hibernate-mapping>

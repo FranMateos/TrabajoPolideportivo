@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="nombre">
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.connection.password">hr</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+        <property name="hibernate.connection.username">hr</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping resource="persistence/Polideportivo.hbm.xml" />
+        <mapping resource="persistence/Alumno.hbm.xml" />
+        <mapping resource="persistence/Matriculados.hbm.xml" />
+        <mapping resource="persistence/Deporte.hbm.xml" />
+        <mapping resource="persistence/Monitor.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

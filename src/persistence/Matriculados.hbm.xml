@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 feb. 2018 10:14:40 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="persistence.Matriculados" table="MATRICULADOS" schema="HR" optimistic-lock="version">
+        <composite-id name="id" class="persistence.MatriculadosId">
+            <key-property name="alumnov1Dni" type="string">
+                <column name="ALUMNOV1_DNI" length="36" />
+            </key-property>
+            <key-property name="deportev1CodDeporte" type="big_decimal">
+                <column name="DEPORTEV1_COD_DEPORTE" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="alumno" class="persistence.Alumno" update="false" insert="false" fetch="select">
+            <column name="ALUMNOV1_DNI" length="36" not-null="true" />
+        </many-to-one>
+        <many-to-one name="deporte" class="persistence.Deporte" update="false" insert="false" fetch="select">
+            <column name="DEPORTEV1_COD_DEPORTE" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="fechaMatriculacion" type="date">
+            <column name="FECHA_MATRICULACION" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

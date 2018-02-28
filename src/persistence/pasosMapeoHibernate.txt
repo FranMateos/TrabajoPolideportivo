@@ -1,0 +1,8 @@
+
+1. Fichero de configuracion de consola Hibernate (cfg y properties)
+
+2. Creación del reveng con tablas a mapear
+
+3. Run > Hibernate Code Generation > Hibernate Code Generation Configuration
+
+4. 

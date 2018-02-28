@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-schema="HR" match-name="ALUMNO"/>
+  <table-filter match-schema="HR" match-name="DEPORTE"/>
+  <table-filter match-schema="HR" match-name="MATRICULADOS"/>
+  <table-filter match-schema="HR" match-name="MONITOR"/>
+  <table-filter match-schema="HR" match-name="POLIDEPORTIVO"/>
+</hibernate-reverse-engineering>
