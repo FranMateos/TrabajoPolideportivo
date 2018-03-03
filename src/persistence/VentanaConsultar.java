@@ -17,7 +17,7 @@ public class VentanaConsultar extends javax.swing.JFrame {
         listaDep=new ArrayList<>();
         listaDep.add(txtDeporte1);
         listaDep.add(txtDeporte2);
-        listaDep.add(txtDeporte4);
+        listaDep.add(txtDeporte3);
         listaDep.add(txtDeporte4);
     }
 
@@ -35,7 +35,7 @@ public class VentanaConsultar extends javax.swing.JFrame {
         txtDeporte3 = new javax.swing.JTextField();
         txtDeporte4 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("DNI del alumno");

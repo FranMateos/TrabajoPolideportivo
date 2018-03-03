@@ -12,6 +12,7 @@ public class VentanaEliminar extends javax.swing.JFrame {
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -23,6 +24,7 @@ public class VentanaEliminar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtCodigoDeporte = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,6 +38,13 @@ public class VentanaEliminar extends javax.swing.JFrame {
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -54,7 +63,9 @@ public class VentanaEliminar extends javax.swing.JFrame {
                 .addComponent(txtCodigoDeporte, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(btnEliminar)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAgregar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,8 +76,9 @@ public class VentanaEliminar extends javax.swing.JFrame {
                     .addComponent(txtDNIAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(txtCodigoDeporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar))
-                .addContainerGap(33, Short.MAX_VALUE))
+                    .addComponent(btnEliminar)
+                    .addComponent(btnAgregar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -97,6 +109,22 @@ public class VentanaEliminar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        try{
+            if(QueriesEmbebidas.consultaDeporteAlumnos(txtDNIAlumno.getText().toString()).size()<4){
+                if(QueriesEmbebidas.insertarNuevoDeporteAAlumno(new Alumno(txtDNIAlumno.getText().toString()), Integer.parseInt(txtCodigoDeporte.getText().toString()))){
+                    JOptionPane.showMessageDialog(null, "Ha sido añadido el deporte al alumno");
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se ha podido añadir el deporte al alumno");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "El alumno ya tiene 4 deportes, es el máximo");
+            }
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "El número no tiene un formato correcto");
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -106,6 +134,7 @@ public class VentanaEliminar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

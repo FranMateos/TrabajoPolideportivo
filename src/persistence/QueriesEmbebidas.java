@@ -31,7 +31,7 @@ public class QueriesEmbebidas {
 			// se abre la sesión
 			Session session=sesion.openSession();
 			// se genera la query
-			Query query = session.createSQLQuery("select * from Deporte where cod_deporte=(select DEPORTEV1_COD_DEPORTE from Matriculados where ALUMNOV1_DNI='"+dni+"')").addEntity(Deporte.class);
+			Query query = session.createSQLQuery("select * from Deporte where cod_deporte in (select DEPORTEV1_COD_DEPORTE from Matriculados where ALUMNOV1_DNI='"+dni+"')").addEntity(Deporte.class);
 			// se extrae el valor en una lista
 			List<Deporte> result = query.list();
 			// cerrar sesión
@@ -144,6 +144,31 @@ public class QueriesEmbebidas {
                 
                 public static boolean insertarNuevoAlumnoYDeporte(Alumno alumno, int deporte) {
                     insertarNuevoAlumno(alumno);
+			boolean bol=false;
+			SessionFactory sesion=SessionFactoryUtil.getSessionFactory();
+			Session session=sesion.openSession();
+                        
+			Date fec=new Date();
+                        int dia=fec.getDate();
+                        int mes=fec.getMonth()+1;
+                        int anio=fec.getYear();
+                        String fech=dia+"/"+mes+"/"+anio;
+                        
+			Query query = session.createSQLQuery("insert into Matriculados "
+					+ "values('"+alumno.getDni()+"',"+deporte+",'"+fech+"')");
+			Transaction tx=session.beginTransaction();
+			int i=query.executeUpdate();
+			if(i>0) {
+				bol=true;
+			}
+			// guardar cambios
+			tx.commit();
+			// cerrar se
+			session.close();
+			return bol;
+		}
+                
+                public static boolean insertarNuevoDeporteAAlumno(Alumno alumno, int deporte) {
 			boolean bol=false;
 			SessionFactory sesion=SessionFactoryUtil.getSessionFactory();
 			Session session=sesion.openSession();

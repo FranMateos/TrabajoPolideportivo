@@ -1,5 +1,5 @@
 package persistence;
-// Generated 13 feb. 2018 10:14:40 by Hibernate Tools 4.3.1.Final
+// Generated 2 mar. 2018 10:38:08 by Hibernate Tools 4.3.1.Final
 
 import java.math.BigDecimal;
 

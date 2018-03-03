@@ -4,5 +4,3 @@
 2. Creación del reveng con tablas a mapear
 
 3. Run > Hibernate Code Generation > Hibernate Code Generation Configuration
-
-4. 

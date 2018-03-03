@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13 feb. 2018 10:14:40 by Hibernate Tools 4.3.1.Final -->
+<!-- Generated 2 mar. 2018 10:38:08 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="persistence.Matriculados" table="MATRICULADOS" schema="HR" optimistic-lock="version">
         <composite-id name="id" class="persistence.MatriculadosId">

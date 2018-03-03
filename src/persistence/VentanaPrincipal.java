@@ -50,7 +50,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Eliminar");
+        jButton3.setText("Deportes");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
